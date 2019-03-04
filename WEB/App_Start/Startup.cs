@@ -3,6 +3,8 @@ using BLL.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Ninject;
+using Ninject.Modules;
 using Owin;
 using System;
 using System.Collections.Generic;
@@ -27,7 +29,7 @@ namespace WEB.App_Start
 
         private IUserService CreateUserService()
         {
-            return serviceCreator.CreateUserService("DefaultConnection");
+            return serviceCreator.CreateUserService("LaborProtection");
         }
     }
 }
