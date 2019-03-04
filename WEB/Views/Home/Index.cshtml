@@ -1,0 +1,41 @@
+﻿@model IEnumerable<WEB.Models.EmployeeViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (User.IsInRole("user") || User.IsInRole("admin"))
+{
+    <div>
+        <h3>Сотрудники</h3>
+        <table>
+            <tr class="header">
+                <td><p>Фамилия</p></td>
+                <td><p>Имя</p></td>
+                <td><p>Отчество</p></td>
+                <td><p>Дата рождения</p></td>
+                <td><p>Дата приема на работу</p></td>
+                <td><p>Домашний адрес</p></td>
+                <td></td>
+            </tr>
+            @foreach (WEB.Models.EmployeeViewModel e in Model)
+            {
+                <tr>
+                    <td><p>@e.Surname</p></td>
+                    <td><p>@e.Name</p></td>
+                    <td><p>@e.LastName</p></td>
+                    <td><p>@e.Birthday.ToShortDateString()</p></td>
+                    <td><p>@e.DateHire.ToShortDateString()</p></td>
+                    <td><p>@e.HomeAddress</p></td>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <td><p><a href="/Home/Edit/@e.Id">Редактировать</a></p></td>}
+                </tr>
+            }
+        </table>
+    </div>
+}
+else
+{
+    <h3>Вам необходимо зарегистрироваться</h3>
+}
+

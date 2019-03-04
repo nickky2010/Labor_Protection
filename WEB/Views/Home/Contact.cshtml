@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Контакты";
+}
+<h2>@ViewBag.Title</h2>
+@*<h3>@ViewBag.Message</h3>*@
+@if (User.IsInRole("admin"))
+{
+    <h2>admin!</h2>
+}
+else
+{
+    <address>
+        Адрес: Беларусь, г.Гомель<br />
+        Телефон: +375293336510<br />
+    </address>
+
+    <address>
+        <strong>Поддержка:</strong>   <a href="mailto:nickky2010@mail.ru">nickky2010@mail.ru</a><br />
+        <strong>Маркетинг:</strong> <a href="mailto:nickky2010@mail.ru">nickky2010@mail.ru</a>
+    </address>
+}
