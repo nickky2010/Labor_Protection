@@ -1,4 +1,5 @@
-﻿using BLL.Interfaces;
+﻿using BLL.DTO.Identity;
+using BLL.Interfaces;
 using BLL.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
@@ -19,7 +20,11 @@ namespace WEB.App_Start
         IServiceCreator serviceCreator = new ServiceCreator();
         public void Configuration(IAppBuilder app)
         {
+            // настраиваем контекст и менеджер
+            //app.CreatePerOwinContext<ApplicationContext>(ApplicationContext.Create);
             app.CreatePerOwinContext<IUserService>(CreateUserService);
+
+            //app.CreatePerOwinContext<ApplicationUserManagerDTO>(ApplicationUserManagerDTO.Create);
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,

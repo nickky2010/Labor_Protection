@@ -15,7 +15,7 @@ namespace WEB.Models
         public string Password { get; set; }
         [Required]
         [DataType(DataType.Password)]
-        [Compare("Password")]
+        [Compare("Password", ErrorMessage = "Пароли не совпадают")]
         public string ConfirmPassword { get; set; }
         [Required]
         public string Address { get; set; }

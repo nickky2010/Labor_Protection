@@ -12,6 +12,10 @@ namespace DAL.EF
     public class ApplicationContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationContext(string conectionString) : base(conectionString) { }
+        public static ApplicationContext Create(string сonectionString)
+        {
+            return new ApplicationContext(сonectionString);
+        }
 
         public DbSet<ClientProfile> ClientProfiles { get; set; }
     }

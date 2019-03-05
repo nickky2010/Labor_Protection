@@ -1,5 +1,8 @@
-﻿using BLL.Interfaces;
+﻿using BLL.DTO.Identity;
+using BLL.Interfaces;
 using DAL.Repositories;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;

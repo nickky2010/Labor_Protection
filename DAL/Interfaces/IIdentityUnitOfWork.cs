@@ -13,6 +13,6 @@ namespace DAL.Interfaces
         ApplicationUserManager UserManager { get; }
         IClientManager ClientManager { get; }
         ApplicationRoleManager RoleManager { get; }
-        Task SaveAsync();
+        Task SaveIdentityAsync();
     }
 }

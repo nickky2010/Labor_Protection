@@ -43,7 +43,7 @@ namespace DAL.Repositories
             get { return roleManager; }
         }
 
-        public async Task SaveAsync()
+        public async Task SaveIdentityAsync()
         {
             await db.SaveChangesAsync();
         }

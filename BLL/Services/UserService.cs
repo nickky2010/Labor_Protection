@@ -36,7 +36,7 @@ namespace BLL.Services
                 // создаем профиль клиента
                 ClientProfile clientProfile = new ClientProfile { Id = user.Id, Address = userDto.Address, Name = userDto.Name };
                 Database.ClientManager.Create(clientProfile);
-                await Database.SaveAsync();
+                await Database.SaveIdentityAsync();
                 return new OperationDetails(true, "Регистрация успешно пройдена", "");
             }
             else
