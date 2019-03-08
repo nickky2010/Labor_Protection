@@ -1,48 +1,80 @@
-﻿@model ICollection<WEB.Models.EmployeeViewModel>
-
-@{
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<style>
+    .main {
+        margin: 3em 0;
+        position: page;
+    }
+
+        .main h1 {
+            color: rgba(26, 187, 0, 0.95);
+        }
+
+        .main .item {
+            position: sticky;
+        }
+
+        .main .des {
+            background: #F97300;
+            color: #ffffff;
+            text-align: center;
+            transition: .1s linear;
+        }
+
+        .main .item:hover .des {
+            height: 10%;
+            background: rgba(26, 187, 0, 0.95);
+            position: sticky;
+            width: 100%;
+            border-bottom-right-radius: 93%;
+            border-bottom-left-radius: 93%;
+            top: 0;
+        }
+</style>
 
 @if (User.IsInRole("user") || User.IsInRole("admin"))
 {
-    <div class="row row-flex">
-        <table class="table table-bordered table-sm table-hover table-responsive-sm">
-            <thead class="text-center">
-                <tr>
-                    <th>Фамилия</th>
-                    <th>Имя</th>
-                    <th>Отчество</th>
-                    <th>Дата рождения</th>
-                    <th>Дата приема</th>
-                    <th>Домашний адрес</th>
-                    <th>Подразделение</th>
-                    @if (User.IsInRole("admin"))
-                    {
-                        <th>Редактирование</th>
-                    }
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (WEB.Models.EmployeeViewModel e in Model)
-                {
-                    <tr>
-                        <td>@e.Surname</td>
-                        <td>@e.Name</td>
-                        <td>@e.LastName</td>
-                        <td class="text-lg-center">@e.Birthday.ToShortDateString()</td>
-                        <td class="text-lg-center">@e.DateHire.ToShortDateString()</td>
-                        <td>@e.HomeAddress</td>
-                        <td>@e.Department.Name</td>
-                        @if (User.IsInRole("admin"))
-                        {
-                            <td><a href="/Home/Edit/@e.Id">Редактировать</a></td>
-                        }
-                    </tr>
-                }
-            </tbody>
-        </table>
+    <!-- Team section -->
+    <div class="main">
+        <div class="container">
+            <h3 class="text-center">Меню</h3>
+            <div class="row flex-row">
+                <div class="col-lg-3 col-md-3 col-sm-12 item">
+                    <a class="nav-link" href="@Url.Content("~/Home/About")">
+                        <img src="~/Content/Images/main/data.png" class="img-fluid" alt="main">
+                        <div class="des">
+                            Данные
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 item">
+                    <a class="nav-link" href="@Url.Content("~/Home/About")">
+                        <img src="~/Content/Images/main/medical.png" class="img-fluid" alt="main">
+                        <div class="des">
+                            Медосмотр
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 item">
+                    <a class="nav-link" href="@Url.Content("~/Home/About")">
+                        <img src="~/Content/Images/main/road_safety.png" class="img-fluid" alt="main">
+                        <div class="des">
+                            Безопасность движения
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 item">
+                    <a class="nav-link" href="@Url.Content("~/Home/About")">
+                        <img src="~/Content/Images/main/graduation.png" class="img-fluid" alt="main">
+                        <div class="des">
+                            Обучение
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 }
 else

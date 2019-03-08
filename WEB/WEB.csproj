@@ -194,6 +194,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\hard_hat.png" />
     <Content Include="Content\Images\loader.gif" />
+    <Content Include="Content\Images\main\data.png" />
+    <Content Include="Content\Images\main\graduation.png" />
+    <Content Include="Content\Images\main\medical.png" />
+    <Content Include="Content\Images\main\road_safety.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -264,6 +268,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Data\EmployeesDataView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

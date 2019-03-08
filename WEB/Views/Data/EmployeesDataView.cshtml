@@ -1,0 +1,52 @@
+﻿@model ICollection<WEB.Models.EmployeeViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Данные по сотрудникам";
+}
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+@if (User.IsInRole("user") || User.IsInRole("admin"))
+{
+    <div class="row row-flex">
+        <table class="table table-bordered table-sm table-hover table-responsive-sm col-auto shr">
+            <thead class="text-center">
+                <tr>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Дата рождения</th>
+                    <th>Дата приема</th>
+                    <th>Домашний адрес</th>
+                    <th>Подразделение</th>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <th>Редактирование</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (WEB.Models.EmployeeViewModel e in Model)
+                {
+                    <tr>
+                        <td>@e.Surname</td>
+                        <td>@e.Name</td>
+                        <td>@e.LastName</td>
+                        <td class="text-lg-center">@e.Birthday.ToShortDateString()</td>
+                        <td class="text-lg-center">@e.DateHire.ToShortDateString()</td>
+                        <td>@e.HomeAddress</td>
+                        <td>@e.Department.Name</td>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <td><a href="/Home/Edit/@e.Id">Редактировать</a></td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <h3>Вам необходимо зарегистрироваться</h3>
+}
