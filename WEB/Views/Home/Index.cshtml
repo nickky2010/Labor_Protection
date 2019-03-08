@@ -1,14 +1,14 @@
-﻿@model IEnumerable<WEB.Models.EmployeeViewModel>
+﻿@model ICollection<WEB.Models.EmployeeViewModel>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" type="text/css" href="css/main.css">
+
 @if (User.IsInRole("user") || User.IsInRole("admin"))
 {
-<div>
-    <div class="table-responsive">
-        <table class="table table-bordered table-sm table-hover">
+    <div class="row row-flex">
+        <table class="table table-bordered table-sm table-hover table-responsive-sm">
             <thead class="text-center">
                 <tr>
                     <th>Фамилия</th>
@@ -17,6 +17,7 @@
                     <th>Дата рождения</th>
                     <th>Дата приема</th>
                     <th>Домашний адрес</th>
+                    <th>Подразделение</th>
                     @if (User.IsInRole("admin"))
                     {
                         <th>Редактирование</th>
@@ -33,6 +34,7 @@
                         <td class="text-lg-center">@e.Birthday.ToShortDateString()</td>
                         <td class="text-lg-center">@e.DateHire.ToShortDateString()</td>
                         <td>@e.HomeAddress</td>
+                        <td>@e.Department.Name</td>
                         @if (User.IsInRole("admin"))
                         {
                             <td><a href="/Home/Edit/@e.Id">Редактировать</a></td>
@@ -42,7 +44,6 @@
             </tbody>
         </table>
     </div>
-</div>
 }
 else
 {

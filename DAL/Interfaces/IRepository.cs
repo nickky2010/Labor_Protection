@@ -23,9 +23,10 @@ namespace DAL.Interfaces
 
         T GetById(int id);
 
-        IEnumerable<T> GetAll();
+        ICollection<T> GetAll();
+        ICollection<T> GetAllInclude(string entity);
 
-        IEnumerable<T> GetMany(Expression<Func<T, bool>> where);
+        ICollection<T> GetMany(Expression<Func<T, bool>> where);
 
         T Get(Expression<Func<T, bool>> where);
 

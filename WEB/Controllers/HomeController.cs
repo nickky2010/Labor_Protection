@@ -19,9 +19,9 @@ namespace WEB.Controllers
         }
         public ActionResult Index()
         {
-            IEnumerable<EmployeeDTO> employeeDTOs = dbService.GetEmployees();
+            ICollection<EmployeeDTO> employeeDTOs = dbService.GetEmployees("Department");
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<EmployeeDTO, EmployeeViewModel>()).CreateMapper();
-            var employee = mapper.Map<IEnumerable<EmployeeDTO>, List<EmployeeViewModel>>(employeeDTOs);
+            var employee = mapper.Map<ICollection<EmployeeDTO>, List<EmployeeViewModel>>(employeeDTOs);
             return View(employee);
         }
 

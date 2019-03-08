@@ -94,12 +94,16 @@ namespace DAL.Repositories
             return _dbset.Find(id);
         }
 
-        public virtual IEnumerable<T> GetAll()
+        public virtual ICollection<T> GetAll()
         {
             return _dbset.ToList();
         }
+        public virtual ICollection<T> GetAllInclude(string entity)
+        {
+            return _dbset.Include(entity).ToList();
+        }
 
-        public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> where)
+        public virtual ICollection<T> GetMany(Expression<Func<T, bool>> where)
         {
             return _dbset.Where(where).ToList();
         }

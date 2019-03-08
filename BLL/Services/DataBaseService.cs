@@ -24,19 +24,32 @@ namespace BLL.Services
             throw new NotImplementedException();
         }
 
-        public IEnumerable<DepartmentDTO> GetDepartments()
+        public ICollection<DepartmentDTO> GetDepartments()
         {
             // применяем автомаппер для проекции одной коллекции на другую
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Department, DepartmentDTO>()).CreateMapper();
-            return mapper.Map<IEnumerable<Department>, List<DepartmentDTO>>(Database.Departments.GetAll());
+            return mapper.Map<ICollection<Department>, List<DepartmentDTO>>(Database.Departments.GetAll());
+        }
+        public ICollection<DepartmentDTO> GetDepartments(string entity)
+        {
+            // применяем автомаппер для проекции одной коллекции на другую
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Department, DepartmentDTO>()).CreateMapper();
+            return mapper.Map<ICollection<Department>, List<DepartmentDTO>>(Database.Departments.GetAllInclude(entity));
         }
 
-        public IEnumerable<EmployeeDTO> GetEmployees()
+        public ICollection<EmployeeDTO> GetEmployees()
         {
             // применяем автомаппер для проекции одной коллекции на другую
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Employee, EmployeeDTO>()).CreateMapper();
-            return mapper.Map<IEnumerable<Employee>, List<EmployeeDTO>>(Database.Employees.GetAll());
+            return mapper.Map<ICollection<Employee>, List<EmployeeDTO>>(Database.Employees.GetAll());
         }
+        public ICollection<EmployeeDTO> GetEmployees(string entity)
+        {
+            // применяем автомаппер для проекции одной коллекции на другую
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Employee, EmployeeDTO>()).CreateMapper();
+            return mapper.Map<ICollection<Employee>, List<EmployeeDTO>>(Database.Employees.GetAllInclude(entity));
+        }
+
         public void Dispose()
         {
             Database.Dispose();
