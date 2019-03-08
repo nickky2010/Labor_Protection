@@ -3,36 +3,46 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" type="text/css" href="css/main.css">
 @if (User.IsInRole("user") || User.IsInRole("admin"))
 {
-    <div>
-        <h3>Сотрудники</h3>
-        <table>
-            <tr class="header">
-                <td><p>Фамилия</p></td>
-                <td><p>Имя</p></td>
-                <td><p>Отчество</p></td>
-                <td><p>Дата рождения</p></td>
-                <td><p>Дата приема на работу</p></td>
-                <td><p>Домашний адрес</p></td>
-                <td></td>
-            </tr>
-            @foreach (WEB.Models.EmployeeViewModel e in Model)
-            {
+<div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-sm table-hover">
+            <thead class="text-center">
                 <tr>
-                    <td><p>@e.Surname</p></td>
-                    <td><p>@e.Name</p></td>
-                    <td><p>@e.LastName</p></td>
-                    <td><p>@e.Birthday.ToShortDateString()</p></td>
-                    <td><p>@e.DateHire.ToShortDateString()</p></td>
-                    <td><p>@e.HomeAddress</p></td>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Дата рождения</th>
+                    <th>Дата приема</th>
+                    <th>Домашний адрес</th>
                     @if (User.IsInRole("admin"))
                     {
-                        <td><p><a href="/Home/Edit/@e.Id">Редактировать</a></p></td>}
+                        <th>Редактирование</th>
+                    }
                 </tr>
-            }
+            </thead>
+            <tbody>
+                @foreach (WEB.Models.EmployeeViewModel e in Model)
+                {
+                    <tr>
+                        <td>@e.Surname</td>
+                        <td>@e.Name</td>
+                        <td>@e.LastName</td>
+                        <td class="text-lg-center">@e.Birthday.ToShortDateString()</td>
+                        <td class="text-lg-center">@e.DateHire.ToShortDateString()</td>
+                        <td>@e.HomeAddress</td>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <td><a href="/Home/Edit/@e.Id">Редактировать</a></td>
+                        }
+                    </tr>
+                }
+            </tbody>
         </table>
     </div>
+</div>
 }
 else
 {

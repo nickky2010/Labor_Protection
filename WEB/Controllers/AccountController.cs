@@ -66,7 +66,7 @@ namespace WEB.Controllers
         public ActionResult Logout()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login");
         }
 
         public ActionResult Register()
