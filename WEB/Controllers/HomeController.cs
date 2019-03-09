@@ -36,6 +36,11 @@ namespace WEB.Controllers
             ViewBag.Message = "Your contact page.";
             return View();
         }
+        public ActionResult Develop()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             dbService.Dispose();
