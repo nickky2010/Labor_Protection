@@ -10,7 +10,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using WEB.Models;
+using WEB.Models.Account;
+using WEB.Filters;
 
 namespace WEB.Controllers
 {
@@ -34,12 +35,15 @@ namespace WEB.Controllers
 
         public ActionResult Login()
         {
-            return View();
+            if(AuthenticationManager.User.IsInRole("user") || AuthenticationManager.User.IsInRole("admin"))
+                return RedirectToAction("Index", "Home");
+            else
+                return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginModel model)
+        public async Task<ActionResult> Login(LoginViewModel model)
         {
             await SetInitialDataAsync();
             if (ModelState.IsValid)
@@ -48,7 +52,7 @@ namespace WEB.Controllers
                 ClaimsIdentity claim = await UserService.Authenticate(userDto);
                 if (claim == null)
                 {
-                    ModelState.AddModelError("", "Неверный логин или пароль.");
+                    ModelState.AddModelError("", "Неверный Email или пароль.");
                 }
                 else
                 {
@@ -76,7 +80,7 @@ namespace WEB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model)
         {
             await SetInitialDataAsync();
             if (ModelState.IsValid)

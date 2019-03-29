@@ -11,7 +11,6 @@ namespace DAL.EF
 {
     public class LaborProtectionContext : DbContext
     {
-        public string ConnectionString { get; set; }
         // инициализация бд начальными значениями
         static LaborProtectionContext()
         {
@@ -23,7 +22,6 @@ namespace DAL.EF
         }
         public LaborProtectionContext(string cs) : base(cs)
         {
-            ConnectionString = cs;
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -33,7 +31,6 @@ namespace DAL.EF
 
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
-
     }
 
     public class LaborProtectionDBInitializer : DropCreateDatabaseAlways<LaborProtectionContext>

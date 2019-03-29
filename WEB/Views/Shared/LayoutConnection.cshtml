@@ -35,25 +35,8 @@
 
         <div class="collapse navbar-collapse" id="navbar1">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"><a class="nav-link" href="@Url.Content("~/Home/Index")">Главная<span class="sr-only">(current)</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="@Url.Content("~/Home/About")">О программе</a></li>
-                <li class="nav-item"><a class="nav-link" href="@Url.Content("~/Home/Contact")">Контакты</a></li>
             </ul>
-
-            <form class="form-inline my-2 my-lg-0">
-                @if (!User.Identity.IsAuthenticated)
-                {
-                    <a class="btn btn-primary btn-primary-spacing" href="@Url.Content("~/Account/Register")" role="button">Регистрация</a>
-                    <a class="btn btn-primary btn-primary-spacing" href="@Url.Content("~/Account/Login")" role="button">Вход</a>
-                }
-                else
-                {
-                    <span class="navbar-text">Пользователь: @User.Identity.Name</span>
-                    <a class="btn btn-primary" href="@Url.Content("~/Account/Logout")" role="button">Выход</a>
-                }
-            </form>
             <ul class="navbar-nav justify-content-end"></ul>
-
         </div>
     </nav>
     <div class="container body-content">

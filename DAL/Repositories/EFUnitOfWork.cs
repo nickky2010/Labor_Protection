@@ -19,6 +19,11 @@ namespace DAL.Repositories
         {
             db = new LaborProtectionContext(connectionString);
         }
+        public bool CheckExistsDataBase()
+        {
+            return db.Database.Exists();
+        }
+
         public IRepository<Employee> Employees
         {
             get
@@ -61,5 +66,6 @@ namespace DAL.Repositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
     }
 }

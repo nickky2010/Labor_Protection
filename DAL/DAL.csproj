@@ -83,7 +83,7 @@
     <Compile Include="Models\Identity\ApplicationRole.cs" />
     <Compile Include="Models\Identity\ApplicationUser.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
-    <Compile Include="EF\ApplicationContext.cs" />
+    <Compile Include="EF\IdentityContext.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Models\Identity\ClientProfile.cs" />

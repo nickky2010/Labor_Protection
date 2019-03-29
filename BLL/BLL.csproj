@@ -90,10 +90,12 @@
     <Compile Include="Infrastructure\InterfacesRegistrationsBLL.cs" />
     <Compile Include="Infrastructure\OperationDetails.cs" />
     <Compile Include="Infrastructure\ValidationException.cs" />
+    <Compile Include="Interfaces\IConnectionStringService.cs" />
     <Compile Include="Interfaces\IDataBaseService.cs" />
-    <Compile Include="Interfaces\IServiceCreator.cs" />
+    <Compile Include="Interfaces\AbstractServiceCreator.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\SqlConnectionStringService.cs" />
     <Compile Include="Services\DataBaseService.cs" />
     <Compile Include="Services\ServiceCreator.cs" />
     <Compile Include="Services\UserService.cs" />

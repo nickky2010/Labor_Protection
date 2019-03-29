@@ -21,7 +21,10 @@ namespace BLL.Services
 
         public void CreateDatabaseOfDataFromExcel(string filename)
         {
-            throw new NotImplementedException();
+        }
+        public bool CheckExistsDataBase()
+        {
+            return Database.CheckExistsDataBase();
         }
 
         public ICollection<DepartmentDTO> GetDepartments()
@@ -54,5 +57,6 @@ namespace BLL.Services
         {
             Database.Dispose();
         }
+
     }
 }

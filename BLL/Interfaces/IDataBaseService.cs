@@ -7,15 +7,13 @@ using System.Threading.Tasks;
 
 namespace BLL.Interfaces
 {
-    public interface IDataBaseService
+    public interface IDataBaseService: IDisposable
     {
         void CreateDatabaseOfDataFromExcel(string filename);
+        bool CheckExistsDataBase();
         ICollection<EmployeeDTO> GetEmployees();
         ICollection<DepartmentDTO> GetDepartments();
         ICollection<EmployeeDTO> GetEmployees(string entity);
         ICollection<DepartmentDTO> GetDepartments(string entity);
-
-        void Dispose();
-
     }
 }

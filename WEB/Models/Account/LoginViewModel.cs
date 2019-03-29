@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace WEB.Models
+namespace WEB.Models.Account
 {
-    public class LoginModel
+    public class LoginViewModel
     {
         [Required]
         public string Email { get; set; }

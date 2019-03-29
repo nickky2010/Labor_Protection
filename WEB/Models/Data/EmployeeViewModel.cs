@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WEB.Models
+namespace WEB.Models.Data
 {
     public class EmployeeViewModel
     {

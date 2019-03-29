@@ -20,7 +20,7 @@ namespace DAL.Identity
         }
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
-            ApplicationContext db = context.Get<ApplicationContext>();
+            IdentityContext db = context.Get<IdentityContext>();
             ApplicationUserManager manager = new ApplicationUserManager(new UserStore<ApplicationUser>(db));
             return manager;
         }

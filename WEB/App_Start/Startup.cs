@@ -11,30 +11,28 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+using WEB.Controllers;
+using WEB.Models.Connection;
 
 [assembly: OwinStartup(typeof(WEB.App_Start.Startup))]
 namespace WEB.App_Start
 {
     public class Startup
     {
-        IServiceCreator serviceCreator = new ServiceCreator();
         public void Configuration(IAppBuilder app)
         {
-            // настраиваем контекст и менеджер
-            //app.CreatePerOwinContext<ApplicationContext>(ApplicationContext.Create);
             app.CreatePerOwinContext<IUserService>(CreateUserService);
-
-            //app.CreatePerOwinContext<ApplicationUserManagerDTO>(ApplicationUserManagerDTO.Create);
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString("/Account/Login")
             });
         }
 
-        private IUserService CreateUserService()
+        private static IUserService CreateUserService()
         {
-            return serviceCreator.CreateUserService("LaborProtection");
+            return (IUserService)DependencyResolver.Current.GetService(typeof(IUserService));
         }
     }
 }

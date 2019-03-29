@@ -12,5 +12,6 @@ namespace DAL.Interfaces
         IRepository<Employee> Employees { get; }
         IRepository<Department> Departments { get; }
         void Save();
+        bool CheckExistsDataBase();
     }
 }

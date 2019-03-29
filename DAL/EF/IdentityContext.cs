@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace DAL.EF
 {
-    public class ApplicationContext : IdentityDbContext<ApplicationUser>
+    public class IdentityContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationContext(string conectionString) : base(conectionString) { }
-        public static ApplicationContext Create(string сonectionString)
+        public IdentityContext(string conectionString) : base(conectionString) { }
+        public static IdentityContext Create(string сonectionString)
         {
-            return new ApplicationContext(сonectionString);
+            return new IdentityContext(сonectionString);
         }
 
         public DbSet<ClientProfile> ClientProfiles { get; set; }

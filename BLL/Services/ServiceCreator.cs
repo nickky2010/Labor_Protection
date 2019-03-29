@@ -11,11 +11,15 @@ using System.Threading.Tasks;
 
 namespace BLL.Services
 {
-    public class ServiceCreator : IServiceCreator
+    public class ServiceCreator : AbstractServiceCreator
     {
-        public IUserService CreateUserService(string connection)
+        public override IUserService CreateUserService()
         {
-            return new UserService(new IdentityUnitOfWork(connection));
+            return new UserService(new IdentityUnitOfWork(AbstractServiceCreator.ConnectionString));
+        }
+        public override IDataBaseService CreateDataService()
+        {
+            return new DataBaseService(new EFUnitOfWork(AbstractServiceCreator.ConnectionString));
         }
     }
 }

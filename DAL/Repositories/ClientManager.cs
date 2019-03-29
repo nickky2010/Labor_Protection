@@ -11,8 +11,8 @@ namespace DAL.Repositories
 {
     public class ClientManager : IClientManager
     {
-        public ApplicationContext Database { get; set; }
-        public ClientManager(ApplicationContext db)
+        public IdentityContext Database { get; set; }
+        public ClientManager(IdentityContext db)
         {
             Database = db;
         }

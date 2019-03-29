@@ -21,11 +21,7 @@ namespace WEB
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            // dependency injection
-            NinjectModule interfacesRegistrationsWeb = new InterfacesRegistrationsWEB();
-            NinjectModule interfacesRegistrationsBLL = new InterfacesRegistrationsBLL("LaborProtection");
-            var kernel = new StandardKernel(interfacesRegistrationsWeb, interfacesRegistrationsBLL);
-            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+            DependencyInjection.Injection("LaborProtection");
         }
     }
 }
