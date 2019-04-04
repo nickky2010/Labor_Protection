@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon " sizes="152x152" type="image/png" href="@Url.Content("~/Content/Images/hard_hat_152x152.png")" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Scripts/js")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .navbar-brand,
+        .navbar-nav li a {
+            line-height: 44px;
+            height: 44px;
+            padding-top: 0;
+        }
+
+        .btn-primary-spacing {
+            margin-right: 5px;
+            margin-bottom: 5px !important;
+        }
+
+        .container-fluid {
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" style="color:yellow"><img src="~/Content/Images/hard_hat.png" alt="" height="40" />Охрана труда</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar1">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"><a class="nav-link" href="@Url.Content("~/Home/Index")">Главная<span class="sr-only">(current)</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="@Url.Content("~/Home/About")">О программе</a></li>
+                <li class="nav-item"><a class="nav-link" href="@Url.Content("~/Home/Contact")">Контакты</a></li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0">
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <a class="btn btn-primary btn-primary-spacing" href="@Url.Content("~/Account/Register")" role="button">Регистрация</a>
+                    <a class="btn btn-primary btn-primary-spacing" href="@Url.Content("~/Account/Login")" role="button">Вход</a>
+                }
+                else
+                {
+                    <span class="navbar-text">Пользователь: @User.Identity.Name</span>
+                    <a class="btn btn-primary" href="@Url.Content("~/Account/Logout")" role="button">Выход</a>
+                }
+            </form>
+            <ul class="navbar-nav justify-content-end"></ul>
+        </div>
+    </nav>
+    <div class="container-fluid body-content">
+        <div class="row">
+            <div class="col-2" style="padding-left: 5px">
+                Одна из трёх колонок
+            </div>
+            <div class="col-10" style="padding-right:15px" >
+                @RenderBody()
+            </div>
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; 2019-@DateTime.Now.Year - Labor Protection Application</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -15,6 +15,7 @@ using WEB.Filters;
 
 namespace WEB.Controllers
 {
+
     public class AccountController : Controller
     {
         private IUserService UserService
@@ -72,7 +73,6 @@ namespace WEB.Controllers
             AuthenticationManager.SignOut();
             return RedirectToAction("Login");
         }
-
         public ActionResult Register()
         {
             return View();

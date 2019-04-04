@@ -5,6 +5,7 @@ using WEB.Models.Connection;
 using BLL.Interfaces;
 using BLL.Services;
 using WEB.Util;
+using System.Threading.Tasks;
 
 namespace WEB.Controllers
 {
@@ -16,7 +17,7 @@ namespace WEB.Controllers
             IsConnect = false;
         }
         // GET: Connection
-        public ActionResult ConnectionStartPage()
+        public async Task<ActionResult> ConnectionStartPage()
         {
             try
             {
@@ -24,7 +25,7 @@ namespace WEB.Controllers
                 if (cookieReq != null)
                 {
                     string connectionString = cookieReq["ConnectionString"].Replace(",", ";");
-                    IsConnect = GetService(connectionString).CheckExistsDataBase();
+                    IsConnect = await Task.Run(() => GetService(connectionString).CheckExistsDataBase());
                     if (connectionString != null && IsConnect)
                     {
                         return RedirectToAction("Login", "Account");
@@ -52,14 +53,14 @@ namespace WEB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ConnectionStartPage(ConnectionModel conMod, string typeDb)
+        public async Task<ActionResult> ConnectionStartPage(ConnectionModel conMod, string typeDb)
         {
             try
             {
                 string connectionString = CreateConnectionString(conMod, typeDb);
                 if (ModelState.IsValid)
                 {
-                    IsConnect = GetService(connectionString).CheckExistsDataBase();
+                    IsConnect = await Task.Run(() => GetService(connectionString).CheckExistsDataBase());
                     if (IsConnect)
                     {
                         HttpCookie cookie = new HttpCookie("userConnectionString");

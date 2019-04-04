@@ -1,15 +1,15 @@
 ﻿@model ICollection<WEB.Models.Data.EmployeeViewModel>
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Данные по сотрудникам";
+    Layout = "~/Views/Shared/Layouts/LayoutData.cshtml";
+    ViewBag.Title = "Employee data";
 }
 <link rel="stylesheet" type="text/css" href="css/main.css">
 
 @if (User.IsInRole("user") || User.IsInRole("admin"))
 {
-    <div class="row row-flex">
-        <table class="table table-bordered table-sm table-hover table-responsive-sm col-auto shr">
+    <div class="row">
+        <table class="table table-bordered table-hover table-responsive-lg col-auto">
             <thead class="text-center">
                 <tr>
                     <th>Фамилия</th>

@@ -3,6 +3,8 @@ using WEB.Filters;
 
 namespace WEB.Controllers
 {
+    [ConnectionAttribute]
+
     [AuthenticationAttribute]
     public class HomeController : Controller
     {

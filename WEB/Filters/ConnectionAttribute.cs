@@ -5,9 +5,10 @@ namespace WEB.Filters
 {
     public class ConnectionAttribute : FilterAttribute, IActionFilter
     {
+        bool connect = false;
         public void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            if (ConnectionController.IsConnect)
+            if (!ConnectionController.IsConnect)
             {
                 filterContext.Result = new HttpUnauthorizedResult();
             }
@@ -15,10 +16,11 @@ namespace WEB.Filters
 
         public void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if (!ConnectionController.IsConnect)
+            if (!connect)
             {
                 filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary
                 { { "controller", "Connection" }, { "action", "ConnectionStartPage" } });
+                connect = true;
             }
         }
     }
