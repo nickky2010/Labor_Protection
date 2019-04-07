@@ -57,6 +57,7 @@ namespace BLL.Services
 
         public string ConnectionString()
         {
+            builder.UserInstance = true;
             return builder.ConnectionString;
         }
     }
