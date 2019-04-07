@@ -23,6 +23,7 @@ D:\1.MyProject\Labor_Protection\DAL\bin\Debug\Microsoft.Owin.Security.Cookies.xm
 D:\1.MyProject\Labor_Protection\DAL\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 D:\1.MyProject\Labor_Protection\DAL\bin\Debug\Newtonsoft.Json.pdb
 D:\1.MyProject\Labor_Protection\DAL\bin\Debug\Newtonsoft.Json.xml
+D:\1.MyProject\Labor_Protection\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
 D:\1.MyProject\Labor_Protection\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 D:\1.MyProject\Labor_Protection\DAL\obj\Debug\DAL.csproj.CopyComplete
 D:\1.MyProject\Labor_Protection\DAL\obj\Debug\DAL.dll
